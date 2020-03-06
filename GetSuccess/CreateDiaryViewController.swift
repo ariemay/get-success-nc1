@@ -9,32 +9,41 @@
 import UIKit
 
 protocol CreateDiaryViewControllerDelegate {
-    func didCreateDiary(controller: CreateDiaryViewController, text: String)
+//    func didCreateDiary(controller: CreateDiaryViewController, text: String)
+    func didCreateDiary(controller: CreateDiaryViewController, diary: Diary)
 }
 
 class CreateDiaryViewController: UIViewController {
     
-    var delegate : CreateDiaryViewControllerDelegate! = nil
+    var delegate : CreateDiaryViewControllerDelegate?
 
     @IBOutlet weak var addTitleDiary: UITextField!
     @IBOutlet weak var dateDiary: UIDatePicker!
     @IBOutlet weak var contentDiary: UITextView!
     
+    var date: String? = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentDiary!.layer.borderWidth = 0.5
+        contentDiary?.layer.borderWidth = 0.5
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func datePickerClicked(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
 
-    /*
-    // MARK: - Navigation
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.short
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let strDate = dateFormatter.string(from: dateDiary.date)
+        print(strDate)
+        date = strDate
     }
-    */
-
+    
+    @IBAction func saveNewDiaryData(_ sender: UIButton) {
+        let diary = Diary(titleDiary: addTitleDiary.text ?? "untitled", dateDiary: date ?? "", contentDiary: contentDiary.text)
+        print(diary)
+        delegate?.didCreateDiary(controller: self, diary: diary)
+    }
+    
 }
