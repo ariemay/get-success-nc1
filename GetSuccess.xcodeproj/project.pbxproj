@@ -16,7 +16,6 @@
 		8D43FB0B240FBBEE00075BD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D43FB09240FBBEE00075BD9 /* Main.storyboard */; };
 		8D43FB0D240FBBEE00075BD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D43FB0C240FBBEE00075BD9 /* Assets.xcassets */; };
 		8D43FB10240FBBEE00075BD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D43FB0E240FBBEE00075BD9 /* LaunchScreen.storyboard */; };
-		8D43FB3C2411068500075BD9 /* DiaryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D43FB3B2411068500075BD9 /* DiaryListViewController.swift */; };
 		8D43FB3E241108D700075BD9 /* CreateDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D43FB3D241108D700075BD9 /* CreateDiaryViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +31,6 @@
 		8D43FB0C240FBBEE00075BD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D43FB0F240FBBEE00075BD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D43FB11240FBBEE00075BD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D43FB3B2411068500075BD9 /* DiaryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryListViewController.swift; sourceTree = "<group>"; };
 		8D43FB3D241108D700075BD9 /* CreateDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDiaryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,7 +69,6 @@
 				8D43FB07240FBBEE00075BD9 /* ViewController.swift */,
 				8D43FB09240FBBEE00075BD9 /* Main.storyboard */,
 				8D43FB3D241108D700075BD9 /* CreateDiaryViewController.swift */,
-				8D43FB3B2411068500075BD9 /* DiaryListViewController.swift */,
 				8D43FB0C240FBBEE00075BD9 /* Assets.xcassets */,
 				8D43FB0E240FBBEE00075BD9 /* LaunchScreen.storyboard */,
 				8D43FB11240FBBEE00075BD9 /* Info.plist */,
@@ -154,7 +151,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D39E93B2412099500D15487 /* DiaryTableViewController.swift in Sources */,
-				8D43FB3C2411068500075BD9 /* DiaryListViewController.swift in Sources */,
 				8D43FB08240FBBEE00075BD9 /* ViewController.swift in Sources */,
 				8D43FB04240FBBEE00075BD9 /* AppDelegate.swift in Sources */,
 				8D43FB3E241108D700075BD9 /* CreateDiaryViewController.swift in Sources */,

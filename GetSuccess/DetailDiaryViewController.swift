@@ -10,30 +10,19 @@ import UIKit
 
 class DetailDiaryViewController: UIViewController {
     
-    @IBOutlet weak var tester: UILabel!
+    @IBOutlet weak var diaryTitle: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var content: UITextView!
     
-    var data: String = "test"
-    var dataDetail: Diary?
-    var name: String? = ""
     
-    override func viewWillAppear(_ animated: Bool) {
-        name = dataDetail?.titleDiary ?? ""
-    }
+    var data: Diary?
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        data = "testt"
-        // Do any additional setup after loading the view.
+        diaryTitle.text = data?.titleDiary
+        date.text = data?.dateDiary
+        content.text = data?.contentDiary
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

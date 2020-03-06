@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Diary {
+struct Diary: Codable {
     let titleDiary: String?
     let dateDiary: String?
     let contentDiary: String?

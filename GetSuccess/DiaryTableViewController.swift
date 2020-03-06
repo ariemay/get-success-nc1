@@ -24,25 +24,20 @@ class DiaryTableViewController: UITableViewController, CreateDiaryViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getStoreData()
         diaryListTable.dataSource = self
         diaryListTable.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//            if segue.identifier == "createDiary"{
-//                let vc = segue.destination as! CreateDiaryViewController
-//                vc.delegate = self
-//            }
         switch segue.identifier {
             case "createDiary":
                 let vc = segue.destination as! CreateDiaryViewController
                 vc.delegate = self
             case "detailDiary":
-                let selectedRow = sender as? Int
-                let detail = segue.destination as! DetailDiaryViewController
-                if myarray[selectedRow!].titleDiary != nil {
-                    detail.name = myarray[selectedRow!].titleDiary
+                if let indexPath = self.tableView.indexPathForSelectedRow {
+                    let controller = segue.destination as! DetailDiaryViewController
+                    controller.data = self.myarray[indexPath.row]
                 }
             default:
                 _ = ""
@@ -50,13 +45,29 @@ class DiaryTableViewController: UITableViewController, CreateDiaryViewController
         }
         
         func apply(_ diary: Diary) {
-            myarray.append(diary)
-            diaryListTable.reloadData()
+            myarray.insert(diary, at: 0)
+            storeData(myarray)
         }
         
         func didCreateDiary(controller: CreateDiaryViewController, diary: Diary) {
             apply(diary)
              controller.navigationController?.popViewController(animated: true)
+        }
+    
+        func storeData(_ diary: [Diary]) -> Void {
+            let diaryData = try! JSONEncoder().encode(diary)
+            UserDefaults.standard.set(diaryData, forKey: "diary")
+            diaryListTable.reloadData()
+        }
+        
+        func getStoreData() {
+            let diaryData = UserDefaults.standard.data(forKey: "diary")
+            if let data = diaryData {
+                print(data)
+                let diaryArray = try! JSONDecoder().decode(Array<Diary>.self, from: data)
+                myarray = diaryArray
+                print(myarray)
+            }
         }
 
     // MARK: - Table view data source
@@ -74,11 +85,4 @@ class DiaryTableViewController: UITableViewController, CreateDiaryViewController
         cell.labelDiaryTitle?.text = myarray[indexPath.item].titleDiary
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(myarray[indexPath.row])
-//        self.performSegue(withIdentifier: "detailDiary", sender: self)
-        self.performSegue(withIdentifier: "detailDiary", sender: indexPath.row)
-    }
-   
 }

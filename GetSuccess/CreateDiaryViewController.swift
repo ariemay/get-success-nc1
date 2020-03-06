@@ -25,11 +25,15 @@ class CreateDiaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentDiary?.layer.borderWidth = 0.5
-        // Do any additional setup after loading the view.
+        contentDiary?.layer.borderWidth = 0.3
+        getDate()
     }
     
     @IBAction func datePickerClicked(_ sender: UIDatePicker) {
+        getDate()
+    }
+    
+    func getDate() -> Void {
         let dateFormatter = DateFormatter()
 
         dateFormatter.dateStyle = DateFormatter.Style.short
