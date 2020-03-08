@@ -20,7 +20,8 @@ class DiaryTableViewController: UITableViewController, CreateDiaryViewController
     @IBOutlet weak var addDiaryButton: UIBarButtonItem!
     
     var myarray = [Diary]()
-    
+    var indexChoosen:Int! = 0
+    let alertForDelete = UIAlertController(title: "Delete Diary Confirmation", message: "Are you really sure about that?", preferredStyle: .actionSheet)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,15 @@ class DiaryTableViewController: UITableViewController, CreateDiaryViewController
         diaryListTable.dataSource = self
         diaryListTable.delegate = self
         
+        alertForDelete.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            self.deleteRow()
+        }))
+        
+        alertForDelete.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -49,6 +58,14 @@ class DiaryTableViewController: UITableViewController, CreateDiaryViewController
             myarray.insert(diary, at: 0)
             storeData(myarray)
         }
+    
+    func deleteRow() -> Void {
+        var newData = myarray
+        newData.remove(at: indexChoosen)
+        self.myarray = newData
+        self.storeData(newData)
+        self.diaryListTable.reloadData()
+    }
         
         func didCreateDiary(controller: CreateDiaryViewController, diary: Diary) {
             apply(diary)
@@ -94,13 +111,10 @@ class DiaryTableViewController: UITableViewController, CreateDiaryViewController
     }
     
     func contextualDeleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
-        var newData = myarray
         let action = UIContextualAction(style: .normal,
                                         title: "Delete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
-                                            newData.remove(at: indexPath.row)
-                                            self.myarray = newData
-                                            self.storeData(newData)
-                                            self.diaryListTable.reloadData()
+                                            self.indexChoosen = indexPath.row
+                                            self.present(self.alertForDelete, animated: true)
         }
         action.backgroundColor = UIColor.red
         return action
