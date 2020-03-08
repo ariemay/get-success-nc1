@@ -11,6 +11,7 @@ import UIKit
 class DiaryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var labelDiaryTitle: UILabel!
+    @IBOutlet weak var dateTime: UILabel!
     
 }
 
@@ -99,6 +100,7 @@ class DiaryTableViewController: UITableViewController, CreateDiaryViewController
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "diarylist", for: indexPath) as! DiaryTableViewCell
         cell.labelDiaryTitle?.text = myarray[indexPath.item].titleDiary
+        cell.dateTime?.text = myarray[indexPath.item].dateDiary
         return cell
     }
     

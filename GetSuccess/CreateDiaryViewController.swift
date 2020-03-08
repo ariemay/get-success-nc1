@@ -17,15 +17,26 @@ class CreateDiaryViewController: UIViewController {
     
     var delegate : CreateDiaryViewControllerDelegate?
 
-    @IBOutlet weak var addTitleDiary: UITextField!
-    @IBOutlet weak var dateDiary: UIDatePicker!
     @IBOutlet weak var contentDiary: UITextView!
     
+    let alertForSave = UIAlertController(title: "Save diary", message: "Please input your commit title:", preferredStyle: .alert)
+    
     var date: String? = ""
-    var textviewActive: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        alertForSave.addTextField { (textfield) in
+            textfield.text = ""
+        }
+        
+        alertForSave.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak alertForSave] (action) in
+            let diaryTitle = (alertForSave?.textFields![0])?.text
+            let diary = Diary(titleDiary: diaryTitle ?? "untitled", dateDiary: self.date ?? "", contentDiary: self.contentDiary.text)
+            self.delegate?.didCreateDiary(controller: self, diary: diary)
+        }))
+        
+        alertForSave.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
         contentDiary?.layer.borderWidth = 0.3
         getDate()
         
@@ -36,15 +47,6 @@ class CreateDiaryViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
-    }
-    
-    @objc private func textViewDidBeginEditing(notification: Notification) {
-        print(notification)
-        textviewActive = true
-    }
-    
-    @objc private func textViewDidEndEditing(notification: Notification) {
-        textviewActive = false
     }
     
     @objc func adjustForKeyboard(notification: Notification)
@@ -65,26 +67,21 @@ class CreateDiaryViewController: UIViewController {
         let selectedRange = contentDiary.selectedRange
         contentDiary.scrollRangeToVisible(selectedRange)
     }
-    
-    @IBAction func datePickerClicked(_ sender: UIDatePicker) {
-        getDate()
-    }
-    
+
     func getDate() -> Void {
         let dateFormatter = DateFormatter()
 
         dateFormatter.dateStyle = DateFormatter.Style.short
         dateFormatter.timeStyle = DateFormatter.Style.short
-
-        let strDate = dateFormatter.string(from: dateDiary.date)
+        
+        let now = Date()
+        let strDate = dateFormatter.string(from: now)
         print(strDate)
         date = strDate
     }
     
     @IBAction func saveNewDiaryData(_ sender: UIButton) {
-        let diary = Diary(titleDiary: addTitleDiary.text ?? "untitled", dateDiary: date ?? "", contentDiary: contentDiary.text)
-        print(diary)
-        delegate?.didCreateDiary(controller: self, diary: diary)
+        self.present(alertForSave, animated: true)
     }
     
 }
