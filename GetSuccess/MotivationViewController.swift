@@ -26,7 +26,7 @@ class MotivationViewController: UIViewController {
     }
     
     @IBAction func changeStories(_ sender: UIButton) {
-        var index = Int.random(in: 0...1)
+        let index = Int.random(in: 0...1)
         imageQuotes.image = images[index]
         textQuotes.text = textQuote[index]
     }

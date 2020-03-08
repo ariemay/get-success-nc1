@@ -37,8 +37,6 @@ class DiaryTableViewController: UITableViewController, CreateDiaryViewController
         
     }
     
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
             case "createDiary":
