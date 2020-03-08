@@ -104,6 +104,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="abX-jZ-XDj"/>
                     <connections>
+                        <outlet property="content" destination="35S-wd-Q6a" id="L0a-bg-eXh"/>
                         <outlet property="date" destination="dh1-3h-4Hj" id="UxH-zN-YgC"/>
                         <outlet property="diaryTitle" destination="2EA-Md-3p8" id="Sn9-oO-llR"/>
                     </connections>

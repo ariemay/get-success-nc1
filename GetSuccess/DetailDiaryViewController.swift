@@ -16,7 +16,6 @@ class DetailDiaryViewController: UIViewController {
     
     
     var data: Diary?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -27,6 +27,7 @@ class DiaryTableViewController: UITableViewController, CreateDiaryViewController
         getStoreData()
         diaryListTable.dataSource = self
         diaryListTable.delegate = self
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -84,5 +85,24 @@ class DiaryTableViewController: UITableViewController, CreateDiaryViewController
         let cell = tableView.dequeueReusableCell(withIdentifier: "diarylist", for: indexPath) as! DiaryTableViewCell
         cell.labelDiaryTitle?.text = myarray[indexPath.item].titleDiary
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = self.contextualDeleteAction(forRowAtIndexPath: indexPath)
+        let swipeConfig = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeConfig
+    }
+    
+    func contextualDeleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
+        var newData = myarray
+        let action = UIContextualAction(style: .normal,
+                                        title: "Delete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+                                            newData.remove(at: indexPath.row)
+                                            self.myarray = newData
+                                            self.storeData(newData)
+                                            self.diaryListTable.reloadData()
+        }
+        action.backgroundColor = UIColor.red
+        return action
     }
 }
