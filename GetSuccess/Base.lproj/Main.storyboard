@@ -194,27 +194,61 @@
         <!--Motivation-->
         <scene sceneID="tfU-OO-Y8x">
             <objects>
-                <viewController id="FN9-ad-0Rf" sceneMemberID="viewController">
+                <viewController id="FN9-ad-0Rf" customClass="MotivationViewController" customModule="GetSuccess" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ojV-AB-iiq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPt-P3-Uuq">
-                                <rect key="frame" x="186" y="328" width="54" height="21"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g9E-iw-6cV">
+                                <rect key="frame" x="20" y="119" width="374" height="599"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="elon1" translatesAutoresizingMaskIntoConstraints="NO" id="Iqv-aj-xXI">
+                                        <rect key="frame" x="8" y="8" width="358" height="298"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-8Z-kQP">
+                                        <rect key="frame" x="8" y="314" width="358" height="263"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V29-0c-8ls">
+                                <rect key="frame" x="130" y="752" width="155" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Next Quotes" image="quote.bubble.fill" catalog="system">
+                                    <color key="titleColor" red="0.30980392156862746" green="0.0" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeStories:" destination="FN9-ad-0Rf" eventType="touchUpInside" id="RiN-KE-Kzj"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GetSuccessLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Bpe-lh-9dW">
+                                <rect key="frame" x="20" y="44" width="161" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="JPk-aM-PLu"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Motivation" image="smiley" catalog="system" id="wmI-DJ-DIf"/>
+                    <connections>
+                        <outlet property="imageQuotes" destination="Iqv-aj-xXI" id="hXF-Zk-Ju7"/>
+                        <outlet property="nextButton" destination="V29-0c-8ls" id="gGB-I7-mUE"/>
+                        <outlet property="textQuotes" destination="m2S-8Z-kQP" id="TsX-kW-IyR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3GD-px-H0M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136" y="-583"/>
+            <point key="canvasLocation" x="134.78260869565219" y="-583.25892857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Lhm-rw-byC">
@@ -223,7 +257,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0fW-jD-WK2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="tintColor" red="0.027450980392156862" green="0.60784313725490191" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
@@ -239,7 +273,9 @@
         <scene sceneID="QeX-pj-atW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wpI-Cr-DJo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Diary" image="pencil" catalog="system" id="QjT-k4-evW"/>
+                    <tabBarItem key="tabBarItem" title="Diary" image="pencil" catalog="system" id="QjT-k4-evW">
+                        <color key="badgeColor" red="0.027450980390000001" green="0.60784313729999995" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UAx-cb-b4M">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -257,7 +293,9 @@
     </scenes>
     <resources>
         <image name="GetSuccessLogo" width="166.5" height="46.5"/>
+        <image name="elon1" width="500" height="500"/>
         <image name="pencil" catalog="system" width="64" height="56"/>
+        <image name="quote.bubble.fill" catalog="system" width="64" height="54"/>
         <image name="smiley" catalog="system" width="64" height="60"/>
     </resources>
 </document>
