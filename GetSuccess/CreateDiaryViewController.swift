@@ -9,7 +9,6 @@
 import UIKit
 
 protocol CreateDiaryViewControllerDelegate {
-//    func didCreateDiary(controller: CreateDiaryViewController, text: String)
     func didCreateDiary(controller: CreateDiaryViewController, diary: Diary)
 }
 

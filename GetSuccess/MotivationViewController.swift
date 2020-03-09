@@ -22,7 +22,6 @@ class MotivationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     @IBAction func changeStories(_ sender: UIButton) {
